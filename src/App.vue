@@ -50,10 +50,12 @@ export default {
 
   data: function() {
     return {
-      tasks: [],
-      ongoing: [],
-      testing: [],
-      completed: [],
+      groups: {
+        tasks: [],
+        ongoing: [],
+        testing: [],
+        completed: []
+      },
       message: ""
     };
   },
