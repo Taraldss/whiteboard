@@ -3,36 +3,36 @@
     <header>
       <h1>Whiteboard</h1>
     <div>
-      <button id = "add" @click="add"> Add new </button> 
-      <button id = "remove" @click="remove"> Remove </button> 
+      <button id = "add" @click="add()"> Add new </button> 
+      <button id = "remove" @click="remove()"> Remove </button> 
     </div>
-    <section v-if = "'add'">
-      <textarea v-model = "message" placeholder = "ur mom gay" ></textarea>
+    <section v-if="add">
+      <textarea v-model="message" placeholder="ur mom gay" ></textarea>
     </section>
     </header> 
     <div class="noteboard">
-      <section class = "Tasks">
+      <section class="tasks">
         <h2> Tasks </h2>
-        <draggable v-model="Tasks" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
-          <div v-for="element in Tasks" :key="element.id">{{element}}</div> 
+        <draggable v-model="groups.tasks" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
+          <div v-for="element in groups.tasks" :key="element.id">{{element.content}}</div> 
         </draggable>
       </section>
-      <section class = "Ongoing">
+      <section class="ongoing">
         <h2> Ongoing </h2>
-        <draggable v-model="Ongoing" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
-          <div v-for="element in Ongoing" :key="element.id">{{element}}</div>
+        <draggable v-model="groups.ongoing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
+          <div v-for="element in groups.ongoing" :key="element.id">{{element.content}}</div>
         </draggable>
       </section>
-      <section Class = "testing">
+      <section class="testing">
         <h2> Testing </h2>
-        <draggable v-model="testing" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
-          <div v-for="element in testing" :key="element.id">{{element}}</div>
+        <draggable v-model="groups.testing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
+          <div v-for="element in groups.testing" :key="element.id">{{element.content}}</div>
         </draggable>
       </section>
-      <section class = "completed">
+      <section class="completed">
         <h2> Completed </h2>
-        <draggable v-model="completed" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
-          <div v-for="element in completed" :key="element.id">{{element}}</div>
+        <draggable v-model="groups.completed" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
+          <div v-for="element in groups.completed" :key="element.id">{{element.content}}</div>
         </draggable>
       </section>
     </div>
@@ -48,16 +48,27 @@ export default {
     draggable
   },
 
-  data: {},
+  data: function() {
+    return {
+      tasks: [],
+      ongoing: [],
+      testing: [],
+      completed: [],
+      message: ""
+    };
+  },
   methods: {
-    notat: function() {
-      var note = [""];
-    },
     add: function() {
-      if (add === true) {
-        this.note = true;
+      message = notes;
+      if (message != "") {
+        content: groups.tasks;
       }
-    }
+      notes: {
+        message: "";
+        color: blue;
+      }
+    },
+    remove: function() {}
   }
 };
 </script>
@@ -85,11 +96,10 @@ export default {
   display: -ms-flexbox;
   display: flex;
 }
-.note {
-  width: 60%;
-  height: 40px;
-  background-color: #eee;
-  margin: auto;
-  transition: width 500ms;
+.notes {
+  color: blue($color: #000000);
+}
+.drag {
+  min-height: 2rem;
 }
 </style>
