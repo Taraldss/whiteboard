@@ -50,22 +50,23 @@ export default {
 
   data: function() {
     return {
-      tasks: [],
-      ongoing: [],
-      testing: [],
-      completed: [],
+      groups: {
+        tasks: [],
+        ongoing: [],
+        testing: [],
+        completed: []
+      },
       message: ""
     };
   },
   methods: {
     add: function() {
-      message = notes;
-      if (message != "") {
-        content: groups.tasks;
+      content: this.message;
+      if (this.message != "") {
+        this.groups.tasks.push(newMessage);
       }
       notes: {
-        message: "";
-        color: blue;
+        let newMessage = {};
       }
     },
     remove: function() {}
