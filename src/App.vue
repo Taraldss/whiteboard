@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style = "overflow: visible;">
+  <div id="app" style = "overflow: visible;" >
     <header>
       <h1>Whiteboard</h1>
     <div>
@@ -7,7 +7,7 @@
       <button id = "remove" @click="remove()"> Remove </button> 
     </div>
     <section v-if="add">
-      <textarea v-model="message" placeholder="ur mom gay" ></textarea>
+      <textarea v-model="message" placeholder="" ></textarea>
     </section>
     </header> 
     <div class="noteboard">
@@ -56,7 +56,8 @@ export default {
         testing: [],
         completed: []
       },
-      message: ""
+      message: "",
+      newMessage: ""
     };
   },
   methods: {
@@ -66,7 +67,7 @@ export default {
         this.groups.tasks.push(newMessage);
       }
       notes: {
-        let newMessage = {};
+        let newMessage = { message };
       }
     },
     remove: function() {}
