@@ -3,37 +3,36 @@
     <header>
     <div>
       <h1>Whiteboard</h1>
-      <button id = "add" @click="add()" class ="button"> + </button> 
-      <button id = "remove" @click="remove()" class ="button"> - </button> 
+      <button @click="add()" class="button"> + </button> 
+      <button @click="remove()" class="button"> - </button> 
     </div>
     <section v-if="add">
-      <textarea v-model="message" placeholder="new task" class ="messageBoard" ></textarea>
-      <div id = "newMessage"></div>
+      <textarea v-model="message" placeholder="new task" class="messageBoard" ></textarea>
     </section>
     </header> 
     <div class="noteboard">
       <section class="tasks">
         <h2> Tasks </h2>
         <draggable v-model="groups.tasks" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.tasks" :key="element.id">{{element.content}}</div> 
+          <div v-for="element in groups.tasks" :key="element.id">{{element}}</div> 
         </draggable>
       </section>
       <section class="ongoing">
         <h2> Ongoing </h2>
         <draggable v-model="groups.ongoing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.ongoing" :key="element.id">{{element.content}}</div>
+          <div v-for="element in groups.ongoing" :key="element.id">{{element}}</div>
         </draggable>
       </section>
       <section class="testing">
         <h2> Testing </h2>
         <draggable v-model="groups.testing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.testing" :key="element.id">{{element.content}}</div>
+          <div v-for="element in groups.testing" :key="element.id">{{element}}</div>
         </draggable>
       </section>
       <section class="completed">
         <h2> Completed </h2>
         <draggable v-model="groups.completed" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.completed" :key="element.id">{{element.content}}</div>
+          <div v-for="element in groups.completed" :key="element.id">{{element}}</div>
         </draggable>
       </section>
     </div>
@@ -57,15 +56,13 @@ export default {
         testing: [],
         completed: []
       },
-      message: "",
-      newMessage: ""
+      message: ""
     };
   },
   methods: {
     add: function() {
-      content: this.message;
       if (this.message != "") {
-        this.groups.tasks.push(newMessage);
+        this.groups.tasks.push(this.message);
       }
     },
     remove: function() {}
