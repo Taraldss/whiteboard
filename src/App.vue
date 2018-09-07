@@ -1,13 +1,14 @@
 <template>
   <div id="app" style = "overflow: visible;" >
     <header>
-      <h1>Whiteboard</h1>
     <div>
-      <button id = "add" @click="add()"> Add new </button> 
-      <button id = "remove" @click="remove()"> Remove </button> 
+      <h1>Whiteboard</h1>
+      <button id = "add" @click="add()" class ="button"> + </button> 
+      <button id = "remove" @click="remove()" class ="button"> - </button> 
     </div>
     <section v-if="add">
-      <textarea v-model="message" placeholder="" ></textarea>
+      <textarea v-model="message" placeholder="new task" class ="messageBoard" ></textarea>
+      <div id = "newMessage"></div>
     </section>
     </header> 
     <div class="noteboard">
@@ -65,9 +66,6 @@ export default {
       content: this.message;
       if (this.message != "") {
         this.groups.tasks.push(newMessage);
-      }
-      notes: {
-        let newMessage = { message };
       }
     },
     remove: function() {}
