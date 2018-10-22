@@ -2,12 +2,15 @@
   <div id="app" style = "overflow: visible;" >
     <header>
     <div>
-      <h1>Whiteboard</h1>
+      <h1 class = "heading">Whiteboard</h1>
       <button @click="add()" class="button"> + </button> 
       <button @click="remove()" class="button"> - </button> 
     </div>
     <section v-if="add">
       <textarea v-model="message" placeholder="new task" class="messageBoard" ></textarea>
+    </section>
+    <section v-if="remove">
+
     </section>
     </header> 
     <div class="noteboard">
@@ -76,8 +79,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
-  width: 980px;
+  //padding: 180px;
   margin: 0 auto;
 }
 .noteboard section {
@@ -87,6 +89,9 @@ export default {
   flex: 1;
   margin-right: 1rem;
   padding: 0.5rem;
+}
+.heading {
+  color: black;
 }
 .noteboard {
   display: -webkit-box;
@@ -98,5 +103,8 @@ export default {
 }
 .drag {
   min-height: 2rem;
+  color: black;
+  padding: 0, 5rem;
+  background-color: yellow;
 }
 </style>
