@@ -60,6 +60,7 @@ export default {
         completed: []
       },
       message: ""
+      
     };
   },
   methods: {
@@ -68,7 +69,9 @@ export default {
         this.groups.tasks.push(this.message);
       }
     },
-    remove: function() {}
+    remove: function() {
+      this.groups.tasks.splice(this.message);
+    }
   }
 };
 </script>
