@@ -70,7 +70,7 @@ export default {
       }
     },
     remove: function() {
-      this.groups.tasks.splice(this.message);
+      this.groups.tasks.splice(this.message, 1);
     }
   }
 };
