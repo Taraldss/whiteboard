@@ -10,7 +10,6 @@
       <textarea v-model="message" placeholder="new task" class="messageBoard" ></textarea>
     </section>
     <section v-if="remove">
-
     </section>
     </header> 
     <div class="noteboard">
@@ -70,7 +69,7 @@ export default {
       }
     },
     remove: function() {
-      this.groups.tasks.splice(this.message, 1);
+      this.groups.completed.splice(this.message, 1);
     }
   }
 };
