@@ -16,27 +16,42 @@
       <section class="tasks">
         <h2> Tasks </h2>
         <draggable v-model="groups.tasks" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.tasks" :key="element.id">{{element}}</div> 
+          <div class="task" v-for="(element, index) in groups.tasks" :key="index">
+            {{element}}
+            <button @click="removeNew(index,'tasks')">x</button>
+          </div> 
         </draggable>
       </section>
       <section class="ongoing">
         <h2> Ongoing </h2>
         <draggable v-model="groups.ongoing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.ongoing" :key="element.id">{{element}}</div>
+          <div class="task" v-for="(element, index) in groups.ongoing" :key="index">
+            {{element}}
+            <button @click="removeNew(index,'ongoing')">x</button>
+          </div>
         </draggable>
       </section>
       <section class="testing">
         <h2> Testing </h2>
         <draggable v-model="groups.testing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.testing" :key="element.id">{{element}}</div>
+          <div class="task" v-for="(element, index) in groups.testing" :key="index">
+            {{element}}
+            <button @click="removeNew(index,'testing')">x</button>
+          </div>
         </draggable>
       </section>
       <section class="completed">
         <h2> Completed </h2>
         <draggable v-model="groups.completed" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.completed" :key="element.id">{{element}}</div>
+          <div class="task" v-for="(element, index) in groups.completed" :key="index">
+            {{element}}
+            <button @click="removeNew(index,'completed')">x</button>
+          </div>
         </draggable>
       </section>
+    </div>
+    <div>
+      {{ groups }}
     </div>
   </div>
 </template>
@@ -59,7 +74,6 @@ export default {
         completed: []
       },
       message: ""
-      
     };
   },
   methods: {
@@ -70,6 +84,10 @@ export default {
     },
     remove: function() {
       this.groups.completed.splice(this.message, 1);
+    },
+    removeNew: function(index, group) {
+      console.log(this.groups[group]);
+      this.groups[group].splice(index, 1);
     }
   }
 };
