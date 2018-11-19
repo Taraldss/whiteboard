@@ -16,27 +16,42 @@
       <section class="tasks">
         <h2> Tasks </h2>
         <draggable v-model="groups.tasks" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.tasks" :key="element.id">{{element}}</div> 
+          <div class="task" v-for="(element, index) in groups.tasks" :key="index">
+            {{element}}
+            <button @click="remove(index,'tasks')">x</button>
+          </div>         
         </draggable>
       </section>
       <section class="ongoing">
         <h2> Ongoing </h2>
         <draggable v-model="groups.ongoing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.ongoing" :key="element.id">{{element}}</div>
+          <div class="ongoing" v-for="(element, index) in groups.ongoing" :key="index">
+            {{element}}
+            <button @click="remove(index,'ongoing')">x</button>
+          </div> 
         </draggable>
       </section>
       <section class="testing">
         <h2> Testing </h2>
         <draggable v-model="groups.testing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.testing" :key="element.id">{{element}}</div>
+          <div class="testing" v-for="(element, index) in groups.testing" :key="index">
+            {{element}}
+            <button @click="remove(index,'testing')">x</button>
+          </div>         
         </draggable>
       </section>
       <section class="completed">
         <h2> Completed </h2>
         <draggable v-model="groups.completed" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
-          <div v-for="element in groups.completed" :key="element.id">{{element}}</div>
+          <div class="completed" v-for="(element, index) in groups.completed" :key="index">
+            {{element}}
+            <button @click="remove(index,'completed')">x</button>
+          </div>         
         </draggable>
       </section>
+    </div>
+    <div>
+      {{groups}}
     </div>
   </div>
 </template>
@@ -68,8 +83,8 @@ export default {
         this.groups.tasks.push(this.message);
       }
     },
-    remove: function() {
-      this.groups.completed.splice(this.message, 1);
+    remove: function(index, group) {
+      this.groups[group].splice(index, 1);
     }
   }
 };
