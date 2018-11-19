@@ -50,9 +50,6 @@
         </draggable>
       </section>
     </div>
-    <div>
-      {{groups}}
-    </div>
   </div>
 </template>
 
@@ -122,6 +119,5 @@ export default {
   min-height: 2rem;
   color: black;
   padding: 0, 5rem;
-  background-color: yellow;
 }
 </style>
