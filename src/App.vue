@@ -69,7 +69,6 @@ export default {
         completed: []
       },
       message: ""
-      
     };
   },
   methods: {
@@ -79,11 +78,15 @@ export default {
       }
     },
     removeTask: function(){
-      if(removeTask === true){
+      removeTask === removeTl;
+      if(removeTl === true){
         return remove;
-      } 
+      }else{
+        remove2 = false;
+      }
     },
       remove: function(index, group) {
+      remove === remove2;
       this.groups[group].splice(index, 1);
     }
   }
