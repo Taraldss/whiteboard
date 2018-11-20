@@ -3,13 +3,11 @@
     <header>
     <div>
       <h1 class = "heading">Whiteboard</h1>
-      <button @click="add()" class="button"> + </button> 
-      <button @click="remove()" class="button"> - </button> 
+      <button @click="add()" class="button"> Add Task </button> 
+      <button v-if="removeTask">Remove Task</button>
     </div>
     <section v-if="add">
       <textarea v-model="message" placeholder="new task" class="messageBoard" ></textarea>
-    </section>
-    <section v-if="remove">
     </section>
     </header> 
     <div class="noteboard">
@@ -80,7 +78,12 @@ export default {
         this.groups.tasks.push(this.message);
       }
     },
-    remove: function(index, group) {
+    removeTask: function(){
+      if(removeTask === true){
+        return remove;
+      } 
+    },
+      remove: function(index, group) {
       this.groups[group].splice(index, 1);
     }
   }
