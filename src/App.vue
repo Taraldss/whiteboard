@@ -4,7 +4,9 @@
     <div>
       <h1 class = "heading">Whiteboard</h1>
       <button @click="add()" class="button"> Add Task </button> 
-      <button v-if="removeTask">Remove Task</button>
+      <div>
+      <button @click="(removeTask, removeTl)">Remove Task</button>
+      </div>
     </div>
     <section v-if="add">
       <textarea v-model="message" placeholder="new task" class="messageBoard" ></textarea>
@@ -16,7 +18,7 @@
         <draggable v-model="groups.tasks" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
           <div class="task" v-for="(element, index) in groups.tasks" :key="index">
             {{element}}
-            <button @click="remove(index,'tasks')">x</button>
+            <button v-if="seen" @click="remove(index,'tasks')">x</button>
           </div>         
         </draggable>
       </section>
@@ -25,7 +27,7 @@
         <draggable v-model="groups.ongoing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
           <div class="ongoing" v-for="(element, index) in groups.ongoing" :key="index">
             {{element}}
-            <button @click="remove(index,'ongoing')">x</button>
+            <button v-if="seen" @click="remove(index,'ongoing')">x</button>
           </div> 
         </draggable>
       </section>
@@ -34,7 +36,7 @@
         <draggable v-model="groups.testing" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
           <div class="testing" v-for="(element, index) in groups.testing" :key="index">
             {{element}}
-            <button @click="remove(index,'testing')">x</button>
+            <button v-if="seen" @click="remove(index,'testing')">x</button>
           </div>         
         </draggable>
       </section>
@@ -43,7 +45,7 @@
         <draggable v-model="groups.completed" :options="{group:'sections'}" @start="drag=true" @end="drag=false" class="drag">
           <div class="completed" v-for="(element, index) in groups.completed" :key="index">
             {{element}}
-            <button @click="remove(index,'completed')">x</button>
+            <button v-if="seen" @click="remove(index,'completed')">x</button>
           </div>         
         </draggable>
       </section>
@@ -68,7 +70,8 @@ export default {
         testing: [],
         completed: []
       },
-      message: ""
+      message: "",
+      seen: false,
     };
   },
   methods: {
@@ -78,8 +81,9 @@ export default {
       }
     },
     removeTask: function(){
-      if(remove = true){
-      }else{
+      removeTask === removeTl;
+      if(removeTl === true){
+        this.seen = true;
       }
     },
       remove: function(index, group) {
