@@ -78,15 +78,11 @@ export default {
       }
     },
     removeTask: function(){
-      removeTask === removeTl;
-      if(removeTl === true){
-        return remove;
+      if(remove = true){
       }else{
-        remove2 = false;
       }
     },
       remove: function(index, group) {
-      remove === remove2;
       this.groups[group].splice(index, 1);
     }
   }
