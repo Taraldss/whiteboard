@@ -79,6 +79,9 @@ export default {
       }
     },
     removeTask: function(){
+      /*if(removeTask === true){
+        seen = true;
+      }*/
     },
       remove: function(index, group) {
       this.groups[group].splice(index, 1);
