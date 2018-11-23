@@ -4,7 +4,7 @@
     <div>
       <h1 class = "heading">Whiteboard</h1>
       <button @click="add()" class="button"> Add Task </button> 
-      <button @click="removeTask">Remove Task</button>
+      <button @click="removeTl()">Remove Task</button>
     </div>
     <section v-if="add">
       <textarea v-model="message" placeholder="new task" class="messageBoard" ></textarea>
@@ -69,7 +69,7 @@ export default {
         completed: []
       },
       message: "",
-      seen: true,
+      seen: false,
     };
   },
   methods: {
@@ -79,9 +79,10 @@ export default {
       }
     },
     removeTask: function(){
-      /*if(removeTask === true){
-        seen = true;
-      }*/
+      removeTl = false;
+      if(removeTl  === true){
+        this.seen = true;
+      } 
     },
       remove: function(index, group) {
       this.groups[group].splice(index, 1);
