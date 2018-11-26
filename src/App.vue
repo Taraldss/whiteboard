@@ -4,7 +4,7 @@
     <div>
       <h1 class = "heading">Whiteboard</h1>
       <button @click="add()" class="button"> Add Task </button> 
-       <button @click="toggleRemove()">Remove Task</button>
+      <button @click="toggleRemove()">Remove Task</button>
     </div>
     <section v-if="add">
       <textarea v-model="message" placeholder="new task" class="messageBoard" ></textarea>
@@ -106,6 +106,27 @@ export default {
   padding: 0.5rem;
 }
 .task {
+  button {
+    display: none;
+  }
+  button.show {
+    display: inline-block;
+  }
+}.ongoing {
+  button {
+    display: none;
+  }
+  button.show {
+    display: inline-block;
+  }
+}.testing {
+  button {
+    display: none;
+  }
+  button.show {
+    display: inline-block;
+  }
+}.completed {
   button {
     display: none;
   }
