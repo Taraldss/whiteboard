@@ -86,6 +86,13 @@ export default {
     }
   }
 };
+axios.get("http://localhost:8080/whiteboard")
+   .then((response) => {
+    dispatch({ type: Actions.RECEIVE_DATA, payload: response.data }) 
+  }).catch((err) => {
+    dispatch({type: Actions.FETCH_DATA_ERROR, payload: err})
+  });
+  
 </script>
 
 <style lang="scss">
