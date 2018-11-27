@@ -53,6 +53,7 @@
 
 <script>
 import draggable from "vuedraggable";
+import axios from "axios";
 
 export default {
   name: "app",
@@ -86,12 +87,8 @@ export default {
     }
   }
 };
-axios.get("http://localhost:8080/whiteboard")
-   .then((response) => {
-    dispatch({ type: Actions.RECEIVE_DATA, payload: response.data }) 
-  }).catch((err) => {
-    dispatch({type: Actions.FETCH_DATA_ERROR, payload: err})
-  });
+const baseUrl = 'http://localhost:8080/'
+axios.get(`${baseUrl}/whiteboard`).then(res => res)
   
 </script>
 
