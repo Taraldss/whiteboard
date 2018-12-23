@@ -14,39 +14,39 @@
       <button @click="save()">Save all notes</button>
     </div>
     <div class="noteboard">
-      <section class = "Tasks">
+      <section class="tasks">
         <h2> Tasks </h2>
-        <draggable v-model="Tasks" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
-          <div v-for="element in Tasks" :key="element.id">
+        <draggable v-model="groups.task" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
+          <div v-for="element in groups.tasks" :key="element.id">
           {{element}}
           <button :class="{show: showRemove}" @click="remove(index,'tasks')">x</button>
           </div> 
         </draggable>
       </section>
-      <section class = "Ongoing">
+      <section class="ongoing">
         <h2> Ongoing </h2>
-        <draggable v-model="Ongoing" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
-          <div v-for="element in Ongoing" :key="element.id">
+        <draggable v-model="groups.ongoing" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
+          <div v-for="element in groups.ongoing" :key="element.id">
             {{element}}
-         <button :class="{show: showRemove}" @click="remove(index,'tasks')">x</button>
+         <button :class="{show: showRemove}" @click="remove(index,'Ongoing')">x</button>
          </div>
         </draggable>
       </section>
-      <section Class = "testing">
+      <section class="testing">
         <h2> Testing </h2>
-        <draggable v-model="testing" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
-          <div v-for="element in testing" :key="element.id">
+        <draggable v-model="groups.testing" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
+          <div v-for="element in groups.testing" :key="element.id">
             {{element}}
-          <button :class="{show: showRemove}" @click="remove(index,'tasks')">x</button>
+          <button :class="{show: showRemove}" @click="remove(index,'testing')">x</button>
           </div>
         </draggable>
       </section>
-      <section class = "completed">
+      <section class="completed">
         <h2> Completed </h2>
-        <draggable v-model="completed" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
-          <div v-for="element in completed" :key="element.id">
+        <draggable v-model="groups.completed" :options="{group:'sections'}" @start="drag=true" @end="drag=false">
+          <div v-for="element in groups.completed" :key="element.id">
           {{element}}
-          <button :class="{show: showRemove}" @click="remove(index,'tasks')">x</button>
+          <button :class="{show: showRemove}" @click="remove(index,'completed')">x</button>
           </div>
         </draggable>
       </section>
@@ -67,33 +67,18 @@ export default {
 
   data: function() {
     return {
-    groups: [
-      {
-    name: "tasks",
-    issues: []
-      },
-      {
-    name: "ongoing",
-    issues: []
-      },
-      {
-    name: "testing",
-    issues: []
-      },
-      {
-    name: "completed",
-    issues: []
-      }
-    ],
+    groups: {
+       tasks: [],
+        ongoing: [],
+        testing: [],
+        completed: []
+    },
     message: "",
     showRemove: false,
     apiKey: "$2a$10$7ZaK7Pyn.yLeaCSbTHR4i.Tlh.zLpGgkm1qP1y5FOCH5sOFkLFw3a",
-    binUrl: "https://api.jsonbin.io/b/5bfd8966df915b653998c24c",
+    binUrl: "https://api.jsonbin.io/b/5bfd8966df915b653998c24c/2",
     };
   },
-computed:{
-
-},
   methods: {
     add: function() {
       if (this.message != "") {
